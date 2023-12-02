@@ -33,11 +33,13 @@ namespace AdventOfCodeDayGenerator.Services
             stringBuilder.AppendLine("");
             stringBuilder.AppendLine($"\t\tpublic override string SolvePartOne({solverCreationModel.InterfaceOrClassName} input)");
             stringBuilder.AppendLine("\t\t{");
+            stringBuilder.AppendLine("\t\t\t// Insert code here that solves part one of the problem");
             stringBuilder.AppendLine("\t\t\tthrow new MissingMethodException();");
             stringBuilder.AppendLine("\t\t}");
             stringBuilder.AppendLine("");
             stringBuilder.AppendLine($"\t\tpublic override string SolvePartTwo({solverCreationModel.InterfaceOrClassName} input)");
             stringBuilder.AppendLine("\t\t{");
+            stringBuilder.AppendLine("\t\t\t// Insert code here that solves part two of the problem");
             stringBuilder.AppendLine("\t\t\tthrow new MissingMethodException();");
             stringBuilder.AppendLine("\t\t}");
             stringBuilder.AppendLine("\t}");
@@ -61,6 +63,7 @@ namespace AdventOfCodeDayGenerator.Services
             stringBuilder.AppendLine("\t{");
             stringBuilder.AppendLine($"\t\tpublic override {solverCreationModel.InterfaceOrClassName} Parse(string input)");
             stringBuilder.AppendLine("\t\t{");
+            stringBuilder.AppendLine("\t\t\t// Insert code here that parses the input");
             stringBuilder.AppendLine("\t\t\tthrow new MissingMethodException();");
             stringBuilder.AppendLine("\t\t}");
             stringBuilder.AppendLine("\t}");

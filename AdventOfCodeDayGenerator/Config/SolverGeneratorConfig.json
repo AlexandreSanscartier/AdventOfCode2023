@@ -1,5 +1,5 @@
 {
-  "Day": 2,
-  "InputParserModelNamespace": "",
-  "InputParserClassName": "List<int>"
+  "Day": 10,
+  "InputParserModelNamespace": "AdventOfCode2023.Models",
+  "InputParserClassName": "Input"
 }

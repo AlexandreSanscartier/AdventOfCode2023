@@ -8,10 +8,6 @@ var currentDirectory = Environment.CurrentDirectory;
 var splitPath = currentDirectory.Split(Path.DirectorySeparatorChar);
 var adventOfCodeYearRegex = @"AdventOfCode2[0-9]{3}";
 int indexOfAdventOfCodeYear = -1;
-var solverCreationModel = new SolverCreationModel();
-var solverGeneratorConfigJsonFile = Path.Combine(currentDirectory, "Config", "SolverGeneratorConfig.json");
-var solverGeneratorConfigJsonString = File.ReadAllText(solverGeneratorConfigJsonFile);
-var solverGeneratorConfig = JsonSerializer.Deserialize<SolverGeneratorConfigurationModel>(solverGeneratorConfigJsonString);
 
 for (var i = 0; i < splitPath.Length; i++)
 {
@@ -25,6 +21,12 @@ for (var i = 0; i < splitPath.Length; i++)
 var baseDirectory = string.Join(Path.DirectorySeparatorChar, splitPath.Take(indexOfAdventOfCodeYear + 1));
 var testDirectory = Path.Combine(baseDirectory, "AdventOfCode2023.Tests");
 var solverDirectory = Path.Combine(baseDirectory, splitPath[indexOfAdventOfCodeYear], "Solver");
+
+var solverCreationModel = new SolverCreationModel();
+var solverGeneratorConfigJsonFile = Path.Combine(baseDirectory, "AdventOfCodeDayGenerator", "Config", "SolverGeneratorConfig.json");
+var solverGeneratorConfigJsonString = File.ReadAllText(solverGeneratorConfigJsonFile);
+var solverGeneratorConfig = JsonSerializer.Deserialize<SolverGeneratorConfigurationModel>(solverGeneratorConfigJsonString);
+
 
 solverCreationModel.Day = Day.From(solverGeneratorConfig.Day);
 solverCreationModel.InputNamespace = solverGeneratorConfig.InputParserModelNamespace;
