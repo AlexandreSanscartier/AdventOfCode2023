@@ -20,7 +20,7 @@ I learnt my lesson fromt last year having to write a bunch of boilerplate code w
 
 If you want to go ahead and use this as a starting framework to solve your own advent of code 2023 there are a few steps to follow:
 
-1. Add your session key to the _adventofcode.json_ [how do I find my session cookie?](#How-do-I-find-my-session-cookie?)
+1. Add your session key to the _adventofcode.json_ [how do I find my session cookie?](#how-do-i-find-my-session-cookie)
 2. Configure the _SolverGeneratorConfig.json_ with the correct information for the day.
 
 ### How do I use the solution generator?
