@@ -20,11 +20,11 @@ I learnt my lesson fromt last year having to write a bunch of boilerplate code w
 
 If you want to go ahead and use this as a starting framework to solve your own advent of code 2023 there are a few steps to follow:
 
-1. Add your session key to the ==adventofcode.json== [how do I find my session cookie?](#How-do-I-find-my-session-cookie?)
-2. Configure the ==SolverGeneratorConfig.json== with the correct information for the day.
+1. Add your session key to the _adventofcode.json_ [how do I find my session cookie?](#How-do-I-find-my-session-cookie?)
+2. Configure the _SolverGeneratorConfig.json_ with the correct information for the day.
 
 ### How do I use the solution generator?
-There are three important variables in ==SolverGeneratorConfig.json== file.
+There are three important variables in _SolverGeneratorConfig.json_ file.
 1. **Day** The day you want to generate the boilerplate code fore
 2. **InputParserModelNamespace** The namespace in the project that contains your desired input formate.
 3. **InputParserClassName** The name of the class that you want to format your input in
