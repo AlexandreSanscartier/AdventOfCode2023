@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using AdventOfCode2023.Solver.day1;
+using AdventOfCode2023.Solver.day2;
 using AdventOfCodeClient;
 using AdventOfCodeClient.interfaces;
 using AdventOfCodeClient.interfaces.services;
@@ -15,7 +16,9 @@ using IHost host = Host.CreateDefaultBuilder(args)
                 .AddScoped<IProblemOutputSender, ProblemOutputSender>()
                 .AddScoped<IProblemInputCache, ProblemInputCache>()
                 .AddScoped<DayOneSolver>()
+                .AddScoped<DayTwoSolver>()
                 .AddScoped<IDayOneInputParser, DayOneInputParser>()
+                .AddScoped<IDayTwoInputParser, DayTwoInputParser>()
                 .AddScoped<IConfigurationService>(_ =>
                 new ConfigurationService(configFilePath, Assembly.GetExecutingAssembly())))
     .Build();
@@ -26,9 +29,10 @@ IServiceProvider provider = serviceScope.ServiceProvider;
 var problemSolverList = new List<ISolver>()
 {
     provider.GetRequiredService<DayOneSolver>(),
+    provider.GetRequiredService<DayTwoSolver>(),
 };
 
-var problemsToRun = new bool[] { true };
+var problemsToRun = new bool[] { false, true };
 for (int i = 0; i < problemSolverList.Count(); i++)
 {
     var currentDay = i + 1;
