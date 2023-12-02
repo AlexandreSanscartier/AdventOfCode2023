@@ -30,6 +30,7 @@ There are three important variables in _SolverGeneratorConfig.json_ file.
 3. **InputParserClassName** The name of the class that you want to format your input in
 
 **Example**
+
 Say in my main project I have the following class:
 ```
 namespace AdventOfCode2023.Models
