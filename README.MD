@@ -13,8 +13,10 @@ I learnt my lesson fromt last year having to write a bunch of boilerplate code w
 - This includes creating the InputParser interface and class and the Solver for the day.
 - Thie includes creating the tests that I use to test the sample input and then add the results of the day to.
 
+
 ### New From 2023
 - Replaced the Moq testing framework with [FakeItEasy](https://fakeiteasy.github.io/)
+
 
 ## How to Use
 
@@ -23,11 +25,13 @@ If you want to go ahead and use this as a starting framework to solve your own a
 1. Add your session key to the _adventofcode.json_ [how do I find my session cookie?](#how-do-i-find-my-session-cookie)
 2. Configure the _SolverGeneratorConfig.json_ with the correct information for the day.
 
+
 ### How do I use the solution generator?
 There are three important variables in _SolverGeneratorConfig.json_ file.
 1. **Day** The day you want to generate the boilerplate code fore
 2. **InputParserModelNamespace** The namespace in the project that contains your desired input formate.
 3. **InputParserClassName** The name of the class that you want to format your input in
+
 
 **Example**
 
