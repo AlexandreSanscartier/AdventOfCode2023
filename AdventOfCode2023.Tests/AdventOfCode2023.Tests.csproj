@@ -9,11 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Inputs\InputDay1.txt" />
-    <None Remove="Inputs\InputDay2.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Inputs\InputDay1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,5 +1,5 @@
 {
-  "Day": 2,
-  "InputParserModelNamespace": "AdventOfCode2023.Models",
-  "InputParserClassName": "List<CubeGame>"
+  "Day": 3,
+  "InputParserModelNamespace": "AdventOfCode2023.Models.Engine",
+  "InputParserClassName": "EngineSchematic"
 }

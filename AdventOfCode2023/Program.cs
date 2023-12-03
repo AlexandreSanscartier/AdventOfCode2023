@@ -2,6 +2,7 @@
 
 using AdventOfCode2023.Solver.day1;
 using AdventOfCode2023.Solver.day2;
+using AdventOfCode2023.Solver.day3;
 using AdventOfCodeClient;
 using AdventOfCodeClient.interfaces;
 using AdventOfCodeClient.interfaces.services;
@@ -17,8 +18,10 @@ using IHost host = Host.CreateDefaultBuilder(args)
                 .AddScoped<IProblemInputCache, ProblemInputCache>()
                 .AddScoped<DayOneSolver>()
                 .AddScoped<DayTwoSolver>()
+                .AddScoped<DayThreeSolver>()
                 .AddScoped<IDayOneInputParser, DayOneInputParser>()
                 .AddScoped<IDayTwoInputParser, DayTwoInputParser>()
+                .AddScoped<IDayThreeInputParser, DayThreeInputParser>()
                 .AddScoped<IConfigurationService>(_ =>
                 new ConfigurationService(configFilePath, Assembly.GetExecutingAssembly())))
     .Build();
@@ -30,9 +33,10 @@ var problemSolverList = new List<ISolver>()
 {
     provider.GetRequiredService<DayOneSolver>(),
     provider.GetRequiredService<DayTwoSolver>(),
+    provider.GetRequiredService<DayThreeSolver>(),
 };
 
-var problemsToRun = new bool[] { false, true };
+var problemsToRun = new bool[] { false, false, true };
 for (int i = 0; i < problemSolverList.Count(); i++)
 {
     var currentDay = i + 1;

@@ -4,45 +4,45 @@ using AdventOfCodeTest.Library.Interfaces;
 using AdventOfCode2023.Solver.day2;
 using AdventOfCode2023.Models;
 
-namespace AdventOfCode2023.Tests
+namespace AdventOfCode2023.Tests.Day2
 {
-	public class DayTwoTests : ISolverFactTests
-	{
-		private readonly int _day = 2;
-		private readonly string _sampleProblemInput = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green\nGame 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue\nGame 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red\nGame 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red\nGame 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green";
+    public class DayTwoTests : ISolverFactTests
+    {
+        private readonly int _day = 2;
+        private readonly string _sampleProblemInput = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green\nGame 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue\nGame 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red\nGame 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red\nGame 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green";
         private readonly string? _sampleProblemOneInput = null;
         private readonly string? _sampleProblemTwoInput = null;
 
-		public int Day => _day;
+        public int Day => _day;
 
-		public string SampleProblemOneInput => _sampleProblemOneInput ?? _sampleProblemInput;
-		public string SampleProblemTwoInput => _sampleProblemTwoInput ?? _sampleProblemInput;
+        public string SampleProblemOneInput => _sampleProblemOneInput ?? _sampleProblemInput;
+        public string SampleProblemTwoInput => _sampleProblemTwoInput ?? _sampleProblemInput;
 
-		[Fact]
-		public void SampleInput_PartOne_ParsesCorrectly()
-		{
-			//Arrange
-			var inputParser = new DayTwoInputParser();
-			var expectedResult = GenerateGameForSampleInputOne();
+        [Fact]
+        public void SampleInput_PartOne_ParsesCorrectly()
+        {
+            //Arrange
+            var inputParser = new DayTwoInputParser();
+            var expectedResult = GenerateGameForSampleInputOne();
 
-			//Act
-			var result = inputParser.ParseProblemOneInput(this.SampleProblemOneInput);
+            //Act
+            var result = inputParser.ParseProblemOneInput(SampleProblemOneInput);
 
-			//Assert
-			Assert.Equal(expectedResult.First(), result.First());
-		}
+            //Assert
+            Assert.Equal(expectedResult.First(), result.First());
+        }
 
         private IEnumerable<CubeGame> GenerateGameForSampleInputOne()
         {
-			var cubeGames = new List<CubeGame>();
-			var cubeGameOne = new CubeGame();
+            var cubeGames = new List<CubeGame>();
+            var cubeGameOne = new CubeGame();
             cubeGameOne.Id = 1;
             cubeGameOne.AddRound(new CubeGameRound()
-			{
-				RevealedCubes = new Dictionary<Cube, int>()
-				{
-					{ Cube.From("blue"), 3 },
-					{ Cube.From("red"), 4 },
+            {
+                RevealedCubes = new Dictionary<Cube, int>()
+                {
+                    { Cube.From("blue"), 3 },
+                    { Cube.From("red"), 4 },
                 }
             });
             cubeGameOne.AddRound(new CubeGameRound()
@@ -62,7 +62,7 @@ namespace AdventOfCode2023.Tests
                 }
             });
 
-			cubeGames.Add(cubeGameOne);
+            cubeGames.Add(cubeGameOne);
 
             var cubeGameTwo = new CubeGame();
             cubeGameTwo.Id = 2;
@@ -180,95 +180,95 @@ namespace AdventOfCode2023.Tests
             cubeGames.Add(cubeGameFive);
 
             return cubeGames;
-		}
+        }
 
         [Fact]
-		public void SampleInput_PartTwo_ParsesCorrectly()
-		{
-			//Arrange
-			var inputParser = new DayTwoInputParser();
+        public void SampleInput_PartTwo_ParsesCorrectly()
+        {
+            //Arrange
+            var inputParser = new DayTwoInputParser();
             var expectedResult = GenerateGameForSampleInputOne();
 
             //Act
-            var result = inputParser.ParseProblemTwoInput(this.SampleProblemTwoInput);
+            var result = inputParser.ParseProblemTwoInput(SampleProblemTwoInput);
 
-			//Assert
-			Assert.Equal(expectedResult, result);
-		}
+            //Assert
+            Assert.Equal(expectedResult, result);
+        }
 
-		[Fact]
-		public async Task SampleInput_ProducesCorrectResultForPartOne()
-		{
-			//Arrange
-			var inputParser = new DayTwoInputParser();
-			var problemOutputReaderMock = A.Fake<IProblemOutputSender>();
-			var problemInputReader = InputReaderMockerHelper.CreateMock(this.Day, this.SampleProblemOneInput);
+        [Fact]
+        public async Task SampleInput_ProducesCorrectResultForPartOne()
+        {
+            //Arrange
+            var inputParser = new DayTwoInputParser();
+            var problemOutputReaderMock = A.Fake<IProblemOutputSender>();
+            var problemInputReader = InputReaderMockerHelper.CreateMock(Day, SampleProblemOneInput);
 
-			var solver = new DayTwoSolver(problemInputReader, problemOutputReaderMock, inputParser);
-			var expectedResult = "8";
+            var solver = new DayTwoSolver(problemInputReader, problemOutputReaderMock, inputParser);
+            var expectedResult = "8";
 
-			//Act
-			var result = await solver.SolvePartOneAsync();
+            //Act
+            var result = await solver.SolvePartOneAsync();
 
-			//Assert
-			Assert.Equal(expectedResult, result);
-		}
+            //Assert
+            Assert.Equal(expectedResult, result);
+        }
 
-		[Fact]
-		public async Task SampleInput_ProducesCorrectResultForPartTwo()
-		{
-			//Arrange
-			var inputParser = new DayTwoInputParser();
-			var problemOutputReaderMock = A.Fake<IProblemOutputSender>();
-			var problemInputReader = InputReaderMockerHelper.CreateMock(this.Day, this.SampleProblemTwoInput);
+        [Fact]
+        public async Task SampleInput_ProducesCorrectResultForPartTwo()
+        {
+            //Arrange
+            var inputParser = new DayTwoInputParser();
+            var problemOutputReaderMock = A.Fake<IProblemOutputSender>();
+            var problemInputReader = InputReaderMockerHelper.CreateMock(Day, SampleProblemTwoInput);
 
-			var solver = new DayTwoSolver(problemInputReader, problemOutputReaderMock, inputParser);
-			var expectedResult = "2286";
+            var solver = new DayTwoSolver(problemInputReader, problemOutputReaderMock, inputParser);
+            var expectedResult = "2286";
 
-			//Act
-			var result = await solver.SolvePartTwoAsync();
+            //Act
+            var result = await solver.SolvePartTwoAsync();
 
-			//Assert
-			Assert.Equal(expectedResult, result);
-		}
+            //Assert
+            Assert.Equal(expectedResult, result);
+        }
 
-		[Fact]
-		public async Task PartOne_ProducesCorrectResult()
-		{
-			//Arrange
-			var problemInput = InputFileReaderHelper.ReadFile(this.Day);
-			var inputParser = new DayTwoInputParser();
-			var problemOutputReaderMock = A.Fake<IProblemOutputSender>();
-			var problemInputReader = InputReaderMockerHelper.CreateMock(this.Day, problemInput);
+        [Fact]
+        public async Task PartOne_ProducesCorrectResult()
+        {
+            //Arrange
+            var problemInput = InputFileReaderHelper.ReadFile(Day);
+            var inputParser = new DayTwoInputParser();
+            var problemOutputReaderMock = A.Fake<IProblemOutputSender>();
+            var problemInputReader = InputReaderMockerHelper.CreateMock(Day, problemInput);
 
-			var solver = new DayTwoSolver(problemInputReader, problemOutputReaderMock, inputParser);
-			var expectedResult = "2528";
+            var solver = new DayTwoSolver(problemInputReader, problemOutputReaderMock, inputParser);
+            var expectedResult = "2528";
 
-			//Act
-			var result = await solver.SolvePartOneAsync();
+            //Act
+            var result = await solver.SolvePartOneAsync();
 
-			//Assert
-			Assert.Equal(expectedResult, result);
-		}
+            //Assert
+            Assert.Equal(expectedResult, result);
+        }
 
-		[Fact]
-		public async Task PartTwo_ProducesCorrectResult()
-		{
-			//Arrange
-			var problemInput = InputFileReaderHelper.ReadFile(this.Day);
-			var inputParser = new DayTwoInputParser();
-			var problemOutputReaderMock = A.Fake<IProblemOutputSender>();
-			var problemInputReader = InputReaderMockerHelper.CreateMock(this.Day, problemInput);
+        [Fact]
+        public async Task PartTwo_ProducesCorrectResult()
+        {
+            //Arrange
+            var problemInput = InputFileReaderHelper.ReadFile(Day);
+            var inputParser = new DayTwoInputParser();
+            var problemOutputReaderMock = A.Fake<IProblemOutputSender>();
+            var problemInputReader = InputReaderMockerHelper.CreateMock(Day, problemInput);
 
-			var solver = new DayTwoSolver(problemInputReader, problemOutputReaderMock, inputParser);
-			var expectedResult = "67363";
+            var solver = new DayTwoSolver(problemInputReader, problemOutputReaderMock, inputParser);
+            var expectedResult = "67363";
 
-			//Act
-			var result = await solver.SolvePartTwoAsync();
+            //Act
+            var result = await solver.SolvePartTwoAsync();
 
-			//Assert
-			Assert.Equal(expectedResult, result);
-		}
+            //Assert
+            Assert.Equal(expectedResult, result);
+        }
 
-	}
+    }
 }
