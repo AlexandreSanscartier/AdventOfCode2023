@@ -78,11 +78,13 @@ namespace AdventOfCode2023.Solver.day5
             for(int i = 0; i < preSplits.Count - 1; i+=2)
             {
                 var seed = long.Parse(preSplits[i]);
-                var seedRange = long.Parse(preSplits[i + 1]);
-                for(var k = seed; k < seedRange+seed; k++)
+                var range = long.Parse(preSplits[i + 1]);
+                var seedRange = new SeedRange()
                 {
-                    gardenAlmanac.AddSeedToPlant(k);
-                }
+                    SeedStart = seed,
+                    Range = range
+                };
+                gardenAlmanac.AddSeedRange(seedRange);
             }
             var mappings = inputParts.Skip(2);
 

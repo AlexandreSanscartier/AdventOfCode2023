@@ -61,7 +61,7 @@ namespace AdventOfCode2023.Solver.day5
                     var fertilizer = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Water).MapFromDestinationToSource(water);
                     var soil = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Fertilizer).MapFromDestinationToSource(fertilizer);
                     var seed = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Soil).MapFromDestinationToSource(soil);
-					if (input.SeedsThatNeedPlanting.Contains(seed)) return i.ToString();
+					if (input.IsInSeedRange(i)) return i.ToString();
                 }
             } while (!foundSeed);
 			return maxLocation.ToString();

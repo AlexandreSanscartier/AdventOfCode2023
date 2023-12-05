@@ -8,8 +8,12 @@ namespace AdventOfCode2023.Models.Gardens
         private List<IGardenMappings> _gardenMappings = new();
 
         private List<long> _seedsThatNeedPlanting = new();
+
+        private List<ISeedRange> _seedRange = new();
         public List<IGardenMappings> GardenMappings => _gardenMappings;
         public List<long> SeedsThatNeedPlanting => _seedsThatNeedPlanting;
+
+        public List<ISeedRange> SeedRange => _seedRange;
 
         public void AddMapping(IGardenMappings mapping)
         {
@@ -19,6 +23,11 @@ namespace AdventOfCode2023.Models.Gardens
         public void AddSeedToPlant(long seed)
         {
             this._seedsThatNeedPlanting.Add(seed);
+        }
+
+        public void AddSeedRange(ISeedRange seedRange)
+        {
+            this._seedRange.Add(seedRange);
         }
 
         public IGardenMappings GetMappingForDestinationType(GardenAlmanacMappingType destinationType)
@@ -38,6 +47,11 @@ namespace AdventOfCode2023.Models.Gardens
                 this.GardenMappings.All(x => gardenAlmanac.GardenMappings.Contains(x)) &&
                 this.SeedsThatNeedPlanting.Count == gardenAlmanac.SeedsThatNeedPlanting.Count &&
                 this.SeedsThatNeedPlanting.All(x => gardenAlmanac.SeedsThatNeedPlanting.Contains(x));
+        }
+
+        public bool IsInSeedRange(long seed)
+        {
+            return this.SeedRange.Any(x => seed >= x.SeedStart && seed <= x.SeedStart + x.Range);
         }
     }
 }
