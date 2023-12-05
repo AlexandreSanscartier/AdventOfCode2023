@@ -11,5 +11,7 @@ namespace AdventOfCode2023.Models.Interfaces.Gardens
         List<IGardenMapping> Mappings { get; set; }
 
         void AddMapping(IGardenMapping mapping);
+
+        long MapFromSourceToDestination(long sourceInt);
     }
 }

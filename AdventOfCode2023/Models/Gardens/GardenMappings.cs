@@ -22,5 +22,20 @@ namespace AdventOfCode2023.Models.Gardens
                 Mappings.Count == mappings.Mappings.Count &&
                 Mappings.All(x => mappings.Mappings.Contains(x));
         }
+
+        public long MapFromSourceToDestination(long sourceInt)
+        {
+            foreach(var mapping in Mappings)
+            {
+                var start = mapping.SourceRangeStart;
+                var end = mapping.SourceRangeStart + mapping.RangeLength - 1;
+                if(sourceInt >= start && sourceInt <= end)
+                {
+                    var index = sourceInt - start;
+                    return mapping.DestinationRangeStart + index;
+                }
+            }
+            return sourceInt;
+        }
     }
 }

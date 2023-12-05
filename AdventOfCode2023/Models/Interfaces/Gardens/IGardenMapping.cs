@@ -4,10 +4,10 @@ namespace AdventOfCode2023.Models.Interfaces.Gardens
 {
     public interface IGardenMapping
     {
-        int DestinationRangeStart { get; set; }
+        long DestinationRangeStart { get; set; }
 
-        int SourceRangeStart { get; set; }
+        long SourceRangeStart { get; set; }
 
-        int RangeLength { get; set; }
+        long RangeLength { get; set; }
     }
 }

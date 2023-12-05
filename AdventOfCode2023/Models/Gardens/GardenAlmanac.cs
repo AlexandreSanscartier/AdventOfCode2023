@@ -7,16 +7,16 @@ namespace AdventOfCode2023.Models.Gardens
     {
         private List<IGardenMappings> _gardenMappings = new();
 
-        private List<int> _seedsThatNeedPlanting = new();
+        private List<long> _seedsThatNeedPlanting = new();
         public List<IGardenMappings> GardenMappings => _gardenMappings;
-        public List<int> SeedsThatNeedPlanting => _seedsThatNeedPlanting;
+        public List<long> SeedsThatNeedPlanting => _seedsThatNeedPlanting;
 
         public void AddMapping(IGardenMappings mapping)
         {
             this._gardenMappings.Add(mapping);
         }
 
-        public void AddSeedToPlant(int seed)
+        public void AddSeedToPlant(long seed)
         {
             this._seedsThatNeedPlanting.Add(seed);
         }

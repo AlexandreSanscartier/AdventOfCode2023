@@ -166,16 +166,157 @@ namespace AdventOfCode2023.Tests
 		{
 			//Arrange
 			var inputParser = new DayFiveInputParser();
-			var expectedResult = new GardenAlmanac();
+            var expectedResult = GenerateTestGardenAlmanacPartTwo();
 
-			//Act
-			var result = inputParser.ParseProblemTwoInput(this.SampleProblemTwoInput);
+            //Act
+            var result = inputParser.ParseProblemTwoInput(this.SampleProblemTwoInput);
 
 			//Assert
 			Assert.Equal(expectedResult, result);
 		}
 
-		[Fact]
+        private GardenAlmanac GenerateTestGardenAlmanacPartTwo()
+        {
+            var gardenAlmanac = new GardenAlmanac();
+
+            gardenAlmanac.AddSeedToPlant(79);
+            gardenAlmanac.AddSeedToPlant(80);
+            gardenAlmanac.AddSeedToPlant(81);
+            gardenAlmanac.AddSeedToPlant(82);
+            gardenAlmanac.AddSeedToPlant(83);
+            gardenAlmanac.AddSeedToPlant(84);
+            gardenAlmanac.AddSeedToPlant(85);
+            gardenAlmanac.AddSeedToPlant(86);
+            gardenAlmanac.AddSeedToPlant(87);
+            gardenAlmanac.AddSeedToPlant(88);
+            gardenAlmanac.AddSeedToPlant(89);
+            gardenAlmanac.AddSeedToPlant(90);
+            gardenAlmanac.AddSeedToPlant(91);
+            gardenAlmanac.AddSeedToPlant(92);
+            gardenAlmanac.AddSeedToPlant(55);
+            gardenAlmanac.AddSeedToPlant(56);
+            gardenAlmanac.AddSeedToPlant(57);
+            gardenAlmanac.AddSeedToPlant(58);
+            gardenAlmanac.AddSeedToPlant(59);
+            gardenAlmanac.AddSeedToPlant(60);
+            gardenAlmanac.AddSeedToPlant(61);
+            gardenAlmanac.AddSeedToPlant(62);
+            gardenAlmanac.AddSeedToPlant(63);
+            gardenAlmanac.AddSeedToPlant(64);
+            gardenAlmanac.AddSeedToPlant(65);
+            gardenAlmanac.AddSeedToPlant(66);
+            gardenAlmanac.AddSeedToPlant(67);
+
+            //seed-to-soil map:
+            //50 98 2
+            //52 50 48
+            gardenAlmanac.AddMapping(new GardenMappings()
+            {
+                DestinationType = Models.Enum.GardenAlmanacMappingType.Soil,
+                SourceType = Models.Enum.GardenAlmanacMappingType.Seed,
+                Mappings = new List<IGardenMapping>()
+                {
+                    GenerateGardenMapping(50,98,2),
+                    GenerateGardenMapping(52,50,48)
+                }
+            });
+
+            //soil-to-fertilizer map:
+            //0 15 37
+            //37 52 2
+            //39 0 15
+            gardenAlmanac.AddMapping(new GardenMappings()
+            {
+                DestinationType = Models.Enum.GardenAlmanacMappingType.Fertilizer,
+                SourceType = Models.Enum.GardenAlmanacMappingType.Soil,
+                Mappings = new List<IGardenMapping>()
+                {
+                    GenerateGardenMapping(0,15,37),
+                    GenerateGardenMapping(37,52,2),
+                    GenerateGardenMapping(39,0,15)
+                }
+            });
+
+            //fertilizer-to-water map:
+            //49 53 8
+            //0 11 42
+            //42 0 7
+            //57 7 4
+            gardenAlmanac.AddMapping(new GardenMappings()
+            {
+                DestinationType = Models.Enum.GardenAlmanacMappingType.Water,
+                SourceType = Models.Enum.GardenAlmanacMappingType.Fertilizer,
+                Mappings = new List<IGardenMapping>()
+                {
+                    GenerateGardenMapping(49,53,8),
+                    GenerateGardenMapping(0,11,42),
+                    GenerateGardenMapping(42,0,7),
+                    GenerateGardenMapping(57,7,4)
+                }
+            });
+
+            //water-to-light map:
+            //88 18 7
+            //18 25 70
+            gardenAlmanac.AddMapping(new GardenMappings()
+            {
+                DestinationType = Models.Enum.GardenAlmanacMappingType.Light,
+                SourceType = Models.Enum.GardenAlmanacMappingType.Water,
+                Mappings = new List<IGardenMapping>()
+                {
+                    GenerateGardenMapping(88,18,7),
+                    GenerateGardenMapping(18,25,70),
+                }
+            });
+
+            //light-to-temperature map:
+            //45 77 23
+            //81 45 19
+            //68 64 13
+            gardenAlmanac.AddMapping(new GardenMappings()
+            {
+                DestinationType = Models.Enum.GardenAlmanacMappingType.Temperature,
+                SourceType = Models.Enum.GardenAlmanacMappingType.Light,
+                Mappings = new List<IGardenMapping>()
+                {
+                    GenerateGardenMapping(45,77,23),
+                    GenerateGardenMapping(81,45,19),
+                    GenerateGardenMapping(68,64,13),
+                }
+            });
+
+            //temperature-to-humidity map:
+            //0 69 1
+            //1 0 69
+            gardenAlmanac.AddMapping(new GardenMappings()
+            {
+                DestinationType = Models.Enum.GardenAlmanacMappingType.Humidity,
+                SourceType = Models.Enum.GardenAlmanacMappingType.Temperature,
+                Mappings = new List<IGardenMapping>()
+                {
+                    GenerateGardenMapping(0,69,1),
+                    GenerateGardenMapping(1,0,69),
+                }
+            });
+
+            //humidity-to-location map:
+            //60 56 37
+            //56 93 4
+            gardenAlmanac.AddMapping(new GardenMappings()
+            {
+                DestinationType = Models.Enum.GardenAlmanacMappingType.Location,
+                SourceType = Models.Enum.GardenAlmanacMappingType.Humidity,
+                Mappings = new List<IGardenMapping>()
+                {
+                    GenerateGardenMapping(60,56,37),
+                    GenerateGardenMapping(56,93,4),
+                }
+            });
+
+            return gardenAlmanac;
+        }
+
+        [Fact]
 		public async Task SampleInput_ProducesCorrectResultForPartOne()
 		{
 			//Arrange
@@ -184,7 +325,7 @@ namespace AdventOfCode2023.Tests
 			var problemInputReader = InputReaderMockerHelper.CreateMock(this.Day, this.SampleProblemOneInput);
 
 			var solver = new DayFiveSolver(problemInputReader, problemOutputReaderMock, inputParser);
-			var expectedResult = "";
+			var expectedResult = "35";
 
 			//Act
 			var result = await solver.SolvePartOneAsync();
@@ -202,7 +343,7 @@ namespace AdventOfCode2023.Tests
 			var problemInputReader = InputReaderMockerHelper.CreateMock(this.Day, this.SampleProblemTwoInput);
 
 			var solver = new DayFiveSolver(problemInputReader, problemOutputReaderMock, inputParser);
-			var expectedResult = "";
+			var expectedResult = "46";
 
 			//Act
 			var result = await solver.SolvePartTwoAsync();
