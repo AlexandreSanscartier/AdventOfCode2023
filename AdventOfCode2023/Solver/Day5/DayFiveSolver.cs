@@ -1,6 +1,7 @@
 using AdventOfCodeClient.interfaces;
 using AdventOfCodeClient.Solvers;
 using AdventOfCode2023.Models.Gardens;
+using System.IO.Pipes;
 
 namespace AdventOfCode2023.Solver.day5
 {
@@ -46,8 +47,24 @@ namespace AdventOfCode2023.Solver.day5
 		}
 
 		public override string SolvePartTwo(GardenAlmanac input)
-		{
-			return this.SolvePartOne(input);
-		}
+		{             
+			var foundSeed = false;
+			var maxLocation = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Location).Mappings.Select(x => (x.DestinationRangeStart + x.RangeLength)).Max();
+			do
+			{
+				for(long i = 0; i < maxLocation; i++)
+				{
+					var humidity = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Location).MapFromDestinationToSource(i);
+					var temperature = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Humidity).MapFromDestinationToSource(humidity);
+					var light = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Temperature).MapFromDestinationToSource(temperature);
+					var water = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Light).MapFromDestinationToSource(light);
+                    var fertilizer = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Water).MapFromDestinationToSource(water);
+                    var soil = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Fertilizer).MapFromDestinationToSource(fertilizer);
+                    var seed = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Soil).MapFromDestinationToSource(soil);
+					if (input.SeedsThatNeedPlanting.Contains(seed)) return i.ToString();
+                }
+            } while (!foundSeed);
+			return maxLocation.ToString();
+        }
 	}
 }

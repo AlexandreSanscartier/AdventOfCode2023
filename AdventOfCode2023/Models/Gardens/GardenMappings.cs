@@ -23,6 +23,21 @@ namespace AdventOfCode2023.Models.Gardens
                 Mappings.All(x => mappings.Mappings.Contains(x));
         }
 
+        public long MapFromDestinationToSource(long destinationLong)
+        {
+            foreach (var mapping in Mappings)
+            {
+                var start = mapping.DestinationRangeStart;
+                var end = mapping.DestinationRangeStart + mapping.RangeLength - 1;
+                if (destinationLong >= start && destinationLong <= end)
+                {
+                    var index = destinationLong - start;
+                    return mapping.SourceRangeStart + index;
+                }
+            }
+            return destinationLong;
+        }
+
         public long MapFromSourceToDestination(long sourceInt)
         {
             foreach(var mapping in Mappings)

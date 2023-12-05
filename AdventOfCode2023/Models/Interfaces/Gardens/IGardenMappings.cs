@@ -13,5 +13,6 @@ namespace AdventOfCode2023.Models.Interfaces.Gardens
         void AddMapping(IGardenMapping mapping);
 
         long MapFromSourceToDestination(long sourceInt);
+        long MapFromDestinationToSource(long sourceInt);
     }
 }
