@@ -1,5 +1,5 @@
 {
-  "Day": 4,
-  "InputParserModelNamespace": "AdventOfCode2023.Models",
-  "InputParserClassName": "List<ScratchCard>"
+  "Day": 5,
+  "InputParserModelNamespace": "AdventOfCode2023.Models.Gardens",
+  "InputParserClassName": "GardenAlmanac"
 }
