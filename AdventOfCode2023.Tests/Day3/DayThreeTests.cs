@@ -370,7 +370,7 @@ namespace AdventOfCode2023.Tests
 			var problemInputReader = InputReaderMockerHelper.CreateMock(this.Day, problemInput);
 
 			var solver = new DayThreeSolver(problemInputReader, problemOutputReaderMock, inputParser);
-			var expectedResult = "";
+			var expectedResult = "507214";
 
 			//Act
 			var result = await solver.SolvePartOneAsync();
@@ -389,7 +389,7 @@ namespace AdventOfCode2023.Tests
 			var problemInputReader = InputReaderMockerHelper.CreateMock(this.Day, problemInput);
 
 			var solver = new DayThreeSolver(problemInputReader, problemOutputReaderMock, inputParser);
-			var expectedResult = "";
+			var expectedResult = "72553319";
 
 			//Act
 			var result = await solver.SolvePartTwoAsync();

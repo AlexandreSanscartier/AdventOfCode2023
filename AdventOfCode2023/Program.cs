@@ -40,7 +40,7 @@ var problemSolverList = new List<ISolver>()
     provider.GetRequiredService<DayFourSolver>(),
 };
 
-var problemsToRun = new bool[] { false, false, false, true };
+var problemsToRun = new bool[] { false, false, true, true };
 for (int i = 0; i < problemSolverList.Count(); i++)
 {
     var currentDay = i + 1;

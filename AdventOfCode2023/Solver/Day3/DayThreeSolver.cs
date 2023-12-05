@@ -44,6 +44,12 @@ namespace AdventOfCode2023.Solver.day3
 				}
 			}
 
+            if(!string.IsNullOrEmpty(currentNumberString))
+            {
+                if (isNumberAdjacentToSymbol)
+                    partNumberList.Add(int.Parse(currentNumberString));
+            }
+
 			return partNumberList.Sum().ToString();
 		}
 

@@ -4,7 +4,7 @@ using AdventOfCodeTest.Library.Interfaces;
 using AdventOfCode2023.Solver.day2;
 using AdventOfCode2023.Models;
 
-namespace AdventOfCode2023.Tests.Day2
+namespace AdventOfCode2023.Tests
 {
     public class DayTwoTests : ISolverFactTests
     {
