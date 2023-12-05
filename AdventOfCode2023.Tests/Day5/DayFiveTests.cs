@@ -179,33 +179,18 @@ namespace AdventOfCode2023.Tests
         {
             var gardenAlmanac = new GardenAlmanac();
 
-            gardenAlmanac.AddSeedToPlant(79);
-            gardenAlmanac.AddSeedToPlant(80);
-            gardenAlmanac.AddSeedToPlant(81);
-            gardenAlmanac.AddSeedToPlant(82);
-            gardenAlmanac.AddSeedToPlant(83);
-            gardenAlmanac.AddSeedToPlant(84);
-            gardenAlmanac.AddSeedToPlant(85);
-            gardenAlmanac.AddSeedToPlant(86);
-            gardenAlmanac.AddSeedToPlant(87);
-            gardenAlmanac.AddSeedToPlant(88);
-            gardenAlmanac.AddSeedToPlant(89);
-            gardenAlmanac.AddSeedToPlant(90);
-            gardenAlmanac.AddSeedToPlant(91);
-            gardenAlmanac.AddSeedToPlant(92);
-            gardenAlmanac.AddSeedToPlant(55);
-            gardenAlmanac.AddSeedToPlant(56);
-            gardenAlmanac.AddSeedToPlant(57);
-            gardenAlmanac.AddSeedToPlant(58);
-            gardenAlmanac.AddSeedToPlant(59);
-            gardenAlmanac.AddSeedToPlant(60);
-            gardenAlmanac.AddSeedToPlant(61);
-            gardenAlmanac.AddSeedToPlant(62);
-            gardenAlmanac.AddSeedToPlant(63);
-            gardenAlmanac.AddSeedToPlant(64);
-            gardenAlmanac.AddSeedToPlant(65);
-            gardenAlmanac.AddSeedToPlant(66);
-            gardenAlmanac.AddSeedToPlant(67);
+            // seeds: 79 14 55 13
+            gardenAlmanac.AddSeedRange(new SeedRange()
+            {
+                SeedStart = 79,
+                Range = 14
+            });
+
+            gardenAlmanac.AddSeedRange(new SeedRange()
+            {
+                SeedStart = 55,
+                Range = 13
+            });
 
             //seed-to-soil map:
             //50 98 2

@@ -54,7 +54,8 @@ namespace AdventOfCode2023.Solver.day5
 			{
 				for(long i = 0; i < maxLocation; i++)
 				{
-					var humidity = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Location).MapFromDestinationToSource(i);
+                    // 383860877 wrong
+                    var humidity = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Location).MapFromDestinationToSource(i);
 					var temperature = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Humidity).MapFromDestinationToSource(humidity);
 					var light = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Temperature).MapFromDestinationToSource(temperature);
 					var water = input.GetMappingForDestinationType(Models.Enum.GardenAlmanacMappingType.Light).MapFromDestinationToSource(light);
