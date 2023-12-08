@@ -13,5 +13,8 @@ namespace AdventOfCode2023.Models.Maps.Interfaces
         IMapNode LeftDestination { get; set; }
 
         IMapNode RightDestination { get; set; }
+
+        void SetLeftDestination(IMapNode mapNode);
+        void SetRightDestination(IMapNode mapNode);
     }
 }

@@ -6,6 +6,6 @@ namespace AdventOfCode2023.Models.Maps.Interfaces
     {
         List<MapDirectionType> Directions { get; set; }
 
-        IMapNode StartingNode { get; set; }
+        List<IMapNode> StartingNodes { get; set; }
     }
 }
