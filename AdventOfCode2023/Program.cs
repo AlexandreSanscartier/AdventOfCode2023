@@ -60,6 +60,7 @@ var problemSolverList = new List<ISolver>()
     provider.GetRequiredService<DayElevenSolver>(),
 };
 
+/*
 var problemsToRun = new bool[] { false, false, false, false, false, false, false, true };
 for (int i = 0; i < problemSolverList.Count(); i++)
 {
@@ -68,8 +69,15 @@ for (int i = 0; i < problemSolverList.Count(); i++)
     {
         var solver = problemSolverList[i];
         var resultOne = await solver.SolvePartOneAsync();
-        var resultTwo = await solver.SolvePartTwoAsync();
+        //var resultTwo = await solver.SolvePartTwoAsync();
         Console.WriteLine($"Day{currentDay} P1:{resultOne}");
-        Console.WriteLine($"Day{currentDay} P2:{resultTwo}");
+       // Console.WriteLine($"Day{currentDay} P2:{resultTwo}");
     }
 }
+*/
+var currentDay = 11;
+var solver = problemSolverList[8];
+var resultOne = await solver.SolvePartOneAsync();
+var resultTwo = await solver.SolvePartTwoAsync();
+Console.WriteLine($"Day{currentDay} P1:{resultOne}");
+Console.WriteLine($"Day{currentDay} P2:{resultTwo}");

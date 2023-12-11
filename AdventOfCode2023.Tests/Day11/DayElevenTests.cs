@@ -85,7 +85,7 @@ namespace AdventOfCode2023.Tests
 			var problemInputReader = InputReaderMockerHelper.CreateMock(this.Day, this.SampleProblemTwoInput);
 
 			var solver = new DayElevenSolver(problemInputReader, problemOutputReaderMock, inputParser);
-			var expectedResult = "";
+			var expectedResult = "8410";
 
 			//Act
 			var result = await solver.SolvePartTwoAsync();
