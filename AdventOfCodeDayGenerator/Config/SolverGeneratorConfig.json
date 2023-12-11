@@ -1,5 +1,5 @@
 {
-  "Day": 8,
+  "Day": 11,
   "InputParserModelNamespace": "AdventOfCode2023.Models.Maps",
-  "InputParserClassName": "MapInstruction"
+  "InputParserClassName": "GalaxyMap"
 }
