@@ -1,5 +1,5 @@
 {
-  "Day": 8,
-  "InputParserModelNamespace": "AdventOfCode2023.Models.Maps",
-  "InputParserClassName": "MapInstruction"
+  "Day": 10,
+  "InputParserModelNamespace": "AdventOfCode2023.Models",
+  "InputParserClassName": "Pipe"
 }

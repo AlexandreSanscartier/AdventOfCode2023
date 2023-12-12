@@ -26,5 +26,17 @@ namespace AdventOfCode2023.Models
                 Y = this.Y + position.Y
             };
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Position position &&
+                   X == position.X &&
+                   Y == position.Y;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
+        }
     }
 }
