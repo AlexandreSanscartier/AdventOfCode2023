@@ -1,5 +1,5 @@
 {
-  "Day": 10,
+  "Day": 12,
   "InputParserModelNamespace": "AdventOfCode2023.Models",
-  "InputParserClassName": "Pipe"
+  "InputParserClassName": "List<SpringConditionRecord>"
 }

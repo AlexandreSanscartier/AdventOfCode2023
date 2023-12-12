@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using AdventOfCode2023.Solver.day1;
-using AdventOfCode2023.Solver.day10;
 using AdventOfCode2023.Solver.day11;
 using AdventOfCode2023.Solver.day2;
 using AdventOfCode2023.Solver.day3;
@@ -33,7 +32,6 @@ using IHost host = Host.CreateDefaultBuilder(args)
                 .AddScoped<DaySevenSolver>()
                 .AddScoped<DayEightSolver>()
                 .AddScoped<DayNineSolver>()
-                .AddScoped<DayTenSolver>()
                 .AddScoped<DayElevenSolver>()
                 .AddScoped<IDayOneInputParser, DayOneInputParser>()
                 .AddScoped<IDayTwoInputParser, DayTwoInputParser>()
@@ -44,7 +42,6 @@ using IHost host = Host.CreateDefaultBuilder(args)
                 .AddScoped<IDaySevenInputParser, DaySevenInputParser>()
                 .AddScoped<IDayEightInputParser, DayEightInputParser>()
                 .AddScoped<IDayNineInputParser, DayNineInputParser>()
-                .AddScoped<IDayTenInputParser, DayTenInputParser>()
                 .AddScoped<IDayElevenInputParser, DayElevenInputParser>()
                 .AddScoped<IConfigurationService>(_ =>
                 new ConfigurationService(configFilePath, Assembly.GetExecutingAssembly())))
@@ -63,8 +60,7 @@ var problemSolverList = new List<ISolver>()
     provider.GetRequiredService<DaySixSolver>(),
     provider.GetRequiredService<DaySevenSolver>(),
     provider.GetRequiredService<DayEightSolver>(),
-    provider.GetRequiredService<DayNineSolver>(),
-    provider.GetRequiredService<DayTenSolver>(),
+    provider.GetRequiredService<DayNineSolver>(),    
     provider.GetRequiredService<DayElevenSolver>(),
 };
 
