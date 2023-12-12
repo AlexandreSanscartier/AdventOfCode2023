@@ -2,6 +2,7 @@
 
 using AdventOfCode2023.Solver.day1;
 using AdventOfCode2023.Solver.day10;
+using AdventOfCode2023.Solver.day11;
 using AdventOfCode2023.Solver.day2;
 using AdventOfCode2023.Solver.day3;
 using AdventOfCode2023.Solver.day4;
@@ -33,6 +34,7 @@ using IHost host = Host.CreateDefaultBuilder(args)
                 .AddScoped<DayEightSolver>()
                 .AddScoped<DayNineSolver>()
                 .AddScoped<DayTenSolver>()
+                .AddScoped<DayElevenSolver>()
                 .AddScoped<IDayOneInputParser, DayOneInputParser>()
                 .AddScoped<IDayTwoInputParser, DayTwoInputParser>()
                 .AddScoped<IDayThreeInputParser, DayThreeInputParser>()
@@ -43,6 +45,7 @@ using IHost host = Host.CreateDefaultBuilder(args)
                 .AddScoped<IDayEightInputParser, DayEightInputParser>()
                 .AddScoped<IDayNineInputParser, DayNineInputParser>()
                 .AddScoped<IDayTenInputParser, DayTenInputParser>()
+                .AddScoped<IDayElevenInputParser, DayElevenInputParser>()
                 .AddScoped<IConfigurationService>(_ =>
                 new ConfigurationService(configFilePath, Assembly.GetExecutingAssembly())))
     .Build();
@@ -62,9 +65,12 @@ var problemSolverList = new List<ISolver>()
     provider.GetRequiredService<DayEightSolver>(),
     provider.GetRequiredService<DayNineSolver>(),
     provider.GetRequiredService<DayTenSolver>(),
+    provider.GetRequiredService<DayElevenSolver>(),
 };
 
 var problemsToRun = new bool[] { false, false, false, false, false, false, false, false, false, true };
+/*
+var problemsToRun = new bool[] { false, false, false, false, false, false, false, true };
 for (int i = 0; i < problemSolverList.Count(); i++)
 {
     var currentDay = i + 1;
@@ -77,3 +83,15 @@ for (int i = 0; i < problemSolverList.Count(); i++)
         //Console.WriteLine($"Day{currentDay} P2:{resultTwo}");
     }
 }
+        //var resultTwo = await solver.SolvePartTwoAsync();
+        Console.WriteLine($"Day{currentDay} P1:{resultOne}");
+       // Console.WriteLine($"Day{currentDay} P2:{resultTwo}");
+    }
+}
+*/
+var currentDay = 11;
+var solver = problemSolverList[8];
+var resultOne = await solver.SolvePartOneAsync();
+var resultTwo = await solver.SolvePartTwoAsync();
+Console.WriteLine($"Day{currentDay} P1:{resultOne}");
+Console.WriteLine($"Day{currentDay} P2:{resultTwo}");
